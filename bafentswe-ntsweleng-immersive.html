@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Bafentswe Ntsweleng — STEM, innovation, robotics, science and Computer Science.">
+<title>Bafentswe Ntsweleng | STEM & Innovation</title>
+<style>
+:root{--bg:#050711;--panel:#0d111f;--text:#f5f7ff;--muted:#aab2c7;--line:#ffffff1a;--a:#70e1ff;--b:#a88bff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(circle at 20% 20%,#70e1ff24,transparent 28%),radial-gradient(circle at 80% 35%,#a88bff22,transparent 30%),radial-gradient(circle at 50% 90%,#44ffb514,transparent 28%)}
+canvas{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.55}
+nav{position:fixed;top:0;left:0;right:0;z-index:10;padding:18px 6%;display:flex;justify-content:space-between;background:#050711bb;backdrop-filter:blur(10px)}
+.logo{font-weight:800;letter-spacing:.1em}.logo span{color:var(--a)}nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:.9rem}nav a:hover{color:white}
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:100px 7%;position:relative}.hero-inner{max-width:1000px}
+.eyebrow{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:8px 14px;color:var(--muted);background:#ffffff08;animation:float 4s ease-in-out infinite}
+.eyebrow i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#6affc3;box-shadow:0 0 18px #6affc3;margin-right:8px}
+h1{font-size:clamp(3.3rem,11vw,8rem);line-height:.88;letter-spacing:-.07em;margin:28px 0;background:linear-gradient(110deg,#fff,var(--a),var(--b),#fff);background-size:250% auto;color:transparent;background-clip:text;-webkit-background-clip:text;animation:shine 7s linear infinite}
+.hero p,.lead{color:var(--muted)}.hero p{max-width:700px;margin:auto;font-size:1.1rem}.buttons{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.btn{padding:13px 20px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:white;background:#ffffff09;font-weight:700;transition:.3s}.btn.primary{background:white;color:#050711}.btn:hover{transform:translateY(-4px);box-shadow:0 18px 40px #0007}
+.scroll{position:absolute;bottom:20px;color:#778097;font-size:.7rem;letter-spacing:.2em}.scroll:after{content:"";display:block;width:1px;height:45px;background:linear-gradient(#778097,transparent);margin:8px auto}
+section{max-width:1250px;margin:auto;padding:105px 7%}.section-tag{color:var(--a);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase}h2{font-size:clamp(2.1rem,5vw,4rem);line-height:1.05;letter-spacing:-.05em;margin:10px 0 18px}
+.story{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center}.story-card{padding:30px;border:1px solid var(--line);border-radius:28px;background:#0d111fbb;box-shadow:0 25px 80px #0005}
+.timeline{margin-top:28px;border-left:1px solid var(--line);padding-left:25px}.event{position:relative;margin:0 0 28px}.event:before{content:"";position:absolute;left:-31px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--a);box-shadow:0 0 16px var(--a)}.event small{color:var(--a);font-weight:700}.event h3{margin:3px 0}.event p{color:var(--muted);font-size:.92rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}.card{min-height:260px;padding:26px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#ffffff0b,#ffffff02);overflow:hidden;transition:.45s;position:relative}.card:hover{transform:translateY(-10px) rotateX(2deg);border-color:#70e1ff66;box-shadow:0 25px 60px #0008}.icon{font-size:2rem;margin-bottom:24px}.card h3{margin:0 0 9px}.card p{color:var(--muted);font-size:.9rem}.pill{display:inline-block;margin-top:15px;padding:5px 9px;border-radius:99px;background:#70e1ff12;color:var(--a);font-size:.68rem}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:30px}.stat{padding:20px;border:1px solid var(--line);border-radius:18px;background:#ffffff06}.stat strong{display:block;font-size:2rem}.stat span{font-size:.75rem;color:var(--muted)}
+.quote{margin-top:55px;padding:35px;border-left:2px solid var(--a);background:linear-gradient(90deg,#70e1ff0e,transparent);font-size:clamp(1.25rem,3vw,2rem)}
+.cta{text-align:center;padding-bottom:130px}.cta-box{padding:65px 25px;border:1px solid var(--line);border-radius:32px;background:linear-gradient(120deg,#70e1ff0d,#a88bff0d)}
+footer{padding:25px 7%;border-top:1px solid var(--line);color:#717a90;text-align:center;font-size:.75rem}
+.reveal{opacity:0;transform:translateY(35px);transition:.8s}.reveal.show{opacity:1;transform:none}
+@keyframes shine{to{background-position:250% center}}@keyframes float{50%{transform:translateY(-5px)}}
+@media(max-width:850px){nav .links{display:none}.story,.grid{grid-template-columns:1fr}section{padding:80px 6%}}
+</style></head>
+<body><canvas id="stars"></canvas>
+<nav><div class="logo">BAFENTSWE<span>.</span></div><div class="links"><a href="#story">Story</a><a href="#work">Work</a><a href="#leadership">Leadership</a><a href="#future">Future</a></div></nav>
+<header class="hero"><div class="hero-inner"><div class="eyebrow"><i></i>Student • Innovator • Future Computer Scientist</div><h1>Bafentswe<br>Ntsweleng</h1><p>Exploring science, technology and problem-solving — while creating opportunities for other learners to build, experiment and innovate.</p><div class="buttons"><a class="btn primary" href="#work">Explore my work ↓</a><a class="btn" href="#future">Where I'm going</a></div></div><div class="scroll">SCROLL</div></header>
+
+<section id="story" class="reveal"><div class="story"><div><div class="section-tag">01 / My story</div><h2>Curiosity became a direction.</h2><p class="lead">My interest in science started early. Over time, that curiosity grew into a drive to understand problems, build ideas and find better solutions.</p><div class="timeline">
+<div class="event"><small>EARLY YEARS</small><h3>Science first caught my attention</h3><p>A strong curiosity about how things work became part of my journey.</p></div>
+<div class="event"><small>HIGH SCHOOL</small><h3>STEM became something I could create</h3><p>I became involved in science, coding and robotics initiatives at school.</p></div>
+<div class="event"><small>NOW</small><h3>Computer Science + innovation</h3><p>I'm developing my technical skills and looking for ways technology can solve real problems.</p></div>
+</div></div><div class="story-card"><div class="section-tag">A personal principle</div><h2>Build. Learn. Improve.</h2><p class="lead">I don't want to only learn about technology. I want to use it to create practical solutions and open doors for other young people interested in STEM.</p><div class="stats"><div class="stat"><strong>3</strong><span>Science Expo concepts</span></div><div class="stat"><strong>3×</strong><span>Class representative</span></div><div class="stat"><strong>3</strong><span>STEM initiatives helped start</span></div><div class="stat"><strong>1</strong><span>Sasol challenge win</span></div></div></div></div></section>
+
+<section id="work" class="reveal"><div class="section-tag">02 / Selected work</div><h2>Ideas I have explored.</h2><p class="lead">My projects sit at the intersection of science, engineering, energy and healthcare.</p><div class="grid">
+<div class="card"><div class="icon">⚡</div><h3>Hydrogen Fuel Cell AED</h3><p>A concept for a lightweight automated external defibrillator powered by a hydrogen fuel cell, with monitoring capabilities.</p><span class="pill">HEALTH • ENERGY</span></div>
+<div class="card"><div class="icon">🧬</div><h3>Termite-Inspired Energy</h3><p>An investigation into termite-inspired approaches to hydrogen production and electricity generation from cellulose-related processes.</p><span class="pill">ENERGY • BIO-INSPIRED</span></div>
+<div class="card"><div class="icon">🩹</div><h3>Smart Wound Patches</h3><p>A Science Expo concept for patches using biomarkers to indicate changes in a wound and help identify possible infection.</p><span class="pill">BIOTECH • HEALTH</span></div>
+<div class="card"><div class="icon">🤖</div><h3>Eclipse Vanguard</h3><p>Helped build a prospective FIRST Tech Challenge team, contributing research while the team worked toward robotics competition participation.</p><span class="pill">ROBOTICS • FTC</span></div>
+<div class="card"><div class="icon">🏆</div><h3>Sasol Energy Innovation Challenge</h3><p>Part of a Grade 10 team that won at both regional and final stages of the Sasol Energy Innovation Challenge.</p><span class="pill">COMPETITION • ENERGY</span></div>
+<div class="card"><div class="icon">💻</div><h3>Computer Science</h3><p>Exploring programming and building my technical foundation, with Python as one of the languages I've started learning.</p><span class="pill">CODING • FUTURE</span></div>
+</div></section>
+
+<section id="leadership" class="reveal"><div class="section-tag">03 / Leadership & initiative</div><h2>Don't wait for opportunities. Create them.</h2><p class="lead">At school, I helped initiate a coding team, science club and robotics club — creating more spaces for learners to engage with STEM.</p><div class="grid">
+<div class="card"><div class="icon">💻</div><h3>Coding Team</h3><p>Helped initiate a school coding team to give learners a place to develop programming skills.</p></div>
+<div class="card"><div class="icon">🔬</div><h3>Science Club</h3><p>Helped initiate a science club focused on curiosity, experimentation and scientific thinking.</p></div>
+<div class="card"><div class="icon">🤖</div><h3>Robotics Club</h3><p>Helped initiate a robotics club and worked toward creating a competitive robotics pathway.</p></div></div>
+<div class="quote">“I want to find better solutions to the problems we face — and help other young people believe they can build those solutions too.”</div></section>
+
+<section id="future" class="reveal"><div class="section-tag">04 / What's next</div><h2>The next chapter is digital.</h2><p class="lead">I'm interested in Computer Science, programming, artificial intelligence and using technology to solve practical problems. This portfolio will grow alongside that journey.</p><div class="grid">
+<div class="card"><div class="icon">🧠</div><h3>Artificial Intelligence</h3><p>Learn how intelligent systems work and eventually build useful applications.</p></div>
+<div class="card"><div class="icon">🌍</div><h3>Real-world problems</h3><p>Focus on solutions that can have practical value beyond the classroom.</p></div>
+<div class="card"><div class="icon">🚀</div><h3>Keep building</h3><p>Turn ideas, school projects and experiments into a growing body of work.</p></div></div></section>
+
+<section class="cta reveal"><div class="cta-box"><div class="section-tag">05 / The journey</div><h2>There is more to build.</h2><p class="lead" style="margin:auto">This is only the beginning of the Bafentswe Ntsweleng portfolio.</p></div></section>
+<footer>© 2026 Bafentswe Ntsweleng • STEM • Innovation • Leadership</footer>
+<script>
+const c=document.getElementById('stars'),x=c.getContext('2d');let w,h,p=[];
+function resize(){w=c.width=innerWidth*devicePixelRatio;h=c.height=innerHeight*devicePixelRatio;p=Array.from({length:100},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+.3,vx:(Math.random()-.5)*.2*devicePixelRatio,vy:(Math.random()-.5)*.2*devicePixelRatio}))}
+function draw(){x.clearRect(0,0,w,h);for(const a of p){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>w)a.vx*=-1;if(a.y<0||a.y>h)a.vy*=-1;x.beginPath();x.arc(a.x,a.y,a.r,0,7);x.fillStyle='#bde0ff88';x.fill()}requestAnimationFrame(draw)}resize();draw();addEventListener('resize',resize);
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.12});document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
+</script></body></html>
